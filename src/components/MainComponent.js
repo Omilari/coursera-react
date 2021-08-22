@@ -1,10 +1,11 @@
-
+import React, { Component } from 'react';
+import Home from './HomeComponent';
 import Menu from './MenuComponent';
 import { DISHES } from '../shared/dishes';
-import { Component } from 'react';
 import Header from './HeaderComponent';
 import DishDetail from './DishdetailComponent';
-import Footer from './FooterComponent'
+import Footer from './FooterComponent';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 
 
@@ -15,20 +16,25 @@ class Main extends Component {
 
     this.state = {
       dishes: DISHES,
-      selectedDish: null
     };
-  }
-
-  onDishSelect(dishId) {
-    this.setState({ selectedDish: dishId })
   }
   
   render() {
+    const HomePage = () => {
+        return (
+            <Home />
+        );
+    }
+    
     return (
       <div>
         <Header />
-        <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)} />
-        <DishDetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+        <Switch>
+            <Route path="/home" component={HomePage} />
+            <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} />}  /> {/*if you are navigating to just a component that doesn't need props you can simply write the component name
+            other wise you have to pass it in as a function component as seen above*/}
+            <Redirect to="/home" />
+        </Switch>
         <Footer />
       </div>
     );
