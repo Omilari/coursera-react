@@ -10,6 +10,7 @@ import { COMMENTS } from '../shared/comments';
 import { LEADERS } from '../shared/leaders';
 import { PROMOTIONS } from '../shared/promotions';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import About from './AboutComponent';
 
 
 
@@ -52,6 +53,7 @@ class Main extends Component {
             <Route exact path="/menu" component={() => <Menu dishes={this.state.dishes} />}  /> {/*if you are navigating to just a component that doesn't need props you can simply write the component name
             other wise you have to pass it in as a function component as seen above*/}
             <Route path="/menu/:dishId" component={DishWithId} />
+            <Route exact path="/aboutus" component={() => <About leaders={this.state.leaders} />} />
             <Route exact path="/contactus" component={Contact} />
             <Redirect to="/home" />
         </Switch>
