@@ -8,7 +8,7 @@ import Footer from './FooterComponent';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import About from './AboutComponent';
 import { connect } from 'react-redux';
-import { DISHES } from '../shared/dishes';
+
 
 
 const mapStateToProps = state => {

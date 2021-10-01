@@ -5,8 +5,8 @@ import { Control, LocalForm, Errors} from 'react-redux-form';
 
 
 const required = (val) => val && val.length;
-const maxLength = (len) => (val) => !(val) || (val.legth <= len);
-const minLength = (len) => (val) => (val) && (val.legth >= len);
+const maxLength = (len) => (val) => !(val) || (val.length <= len);
+const minLength = (len) => (val) => val && (val.length >= len);
 const isNumber = (val) => !isNaN(Number(val));
 const validEmail = (val) => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 //learn regex!
@@ -101,7 +101,7 @@ class Contact extends Component {
                                         show="touched"
                                         messages={{
                                             required: 'Required',
-                                            minLength: 'Must be greater than 2 characters',
+                                            minLength: 'Must be greater than 3 characters',
                                             maxLength: 'Must be 15 characters or less'
                                         }}
                                     />
@@ -112,7 +112,7 @@ class Contact extends Component {
                                 <Col md={10}>
                                     <Control.text model=".telnum" id="telnum" name="telnum" placeholder="Tel. Number"
                                         className="form-control"
-                                        validators={{ required, minLength: minLength(3), maxLength: maxLength(15), isNumber}}
+                                        validators={{ required, minLength: minLength(2), maxLength: maxLength(15), isNumber}}
                                     /> 
                                     <Errors 
                                         className="text-danger"
