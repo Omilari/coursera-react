@@ -20,3 +20,4 @@ export const Promotions = (state = {
             return state;
     }
 }
+
